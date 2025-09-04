@@ -2,6 +2,7 @@ package com.gaspar.main.service;
 
 import com.gaspar.main.entity.InfoToDecrypt;
 import com.gaspar.main.entity.InfoToEncrypt;
+import com.gaspar.main.helper.PemUtils;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.RSADecrypter;
 import com.nimbusds.jose.crypto.RSAEncrypter;
@@ -27,11 +28,23 @@ public class JweService {
 
     @PostConstruct
     public void init() throws Exception{
-        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
-        keyGen.initialize(2048);
-        KeyPair keyPair = keyGen.generateKeyPair();
-        publicKey = (RSAPublicKey) keyPair.getPublic();
-        privateKey = (RSAPrivateKey) keyPair.getPrivate();
+//        /**
+//         * generador en memoria
+//         */
+//        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+//        keyGen.initialize(2048);
+//        KeyPair keyPair = keyGen.generateKeyPair();
+//        publicKey = (RSAPublicKey) keyPair.getPublic();
+//        privateKey = (RSAPrivateKey) keyPair.getPrivate();
+
+        /**
+         * cargar archivos
+         */
+        publicKey = PemUtils.loadPublicKey("keys/public_key.pem");
+        System.out.println("->publica cargada");
+        privateKey = PemUtils.loadPrivateKey("keys/private_key.pem");
+        System.out.println("->privada cargada");
+
     }
 
     public String encrypt(InfoToEncrypt info)throws Exception {

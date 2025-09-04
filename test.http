@@ -1,3 +1,12 @@
+Genera la clave privada
+
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+
+Extrae la clave pública
+
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+
+
 
 ##### push no encuentra trjeta
 
@@ -6,7 +15,7 @@ Content-Type: application/json
 
 {
     "id":11,
-    "name":"Gashpar"
+    "name":"info encryptda"
 }
 
 
@@ -17,5 +26,5 @@ POST http://localhost:9095/decrypt
 Content-Type: application/json
 
 {
-    "token":"eyJ0eXAiOiJKT1NFIiwiZW5jIjoiQTI1NkdDTSIsImlhdCI6IjE2MjUwNTc4OTYiLCJhbGciOiJSU0EtT0FFUC0yNTYiLCJraWQiOiJ0a24uaXMuandlLjEifQ.oKuHDBDBQy6Jln6y2TodfBBbM1vFFiaXo5Qmu-EngttS4oPMMl-w-FUu4l8k-haXKY18ld-CXzjJDECymooVwDFyngTIC7zE0uPfIDfoWanbkOS042g6oJt5KXZAPhHL_SRYQpD2ehbjXCiujA_Io9_p6sSuiNnhpnj5n6IuBGyfFMH1D9IRr4Tdlg_cfs80SKIvQ5VKuW-bSTBjkzGgXIxklF5OFLIzOz2fJDQg1OW1GpvTojhIhV7QZfP1W-FxJcpIGxozlXV4CslPqRUgadkuklpSxEJZsiLMtMFUcJtZQxfrtqmaUnOs-PxragO2l66vmXECdBt_cPC85M3WIw.xdyLOgdVXTRpUj3N.337otq3yVxZEpe9q9M3KUZY5YsuFH_VHtio.IdfOtRCnu7bzFs32Pn8YDQ"
+    "token":"eyJ0eXAiOiJKT1NFIiwiZW5jIjoiQTI1NkdDTSIsImlhdCI6IjE2MjUwNTc4OTYiLCJhbGciOiJSU0EtT0FFUC0yNTYiLCJraWQiOiJ0a24uaXMuandlLjEifQ.F3zVPx2zoe1OnP1furKuU9v3O5Q4iN2rYB-rZjyoc3poylnMBc7Bn_yBxO7YB6PBqKh4Li2gyrKHCne26tTNT8YFLQB9r5JfiCe0sF_1qFV3xq4g5MufeRamfjwWsVcQHu3YBivc5Qlnv0rhT3BuUfrQe_svBvCHRDeJXPTKlqYSxpf4yLNMY5xNxd_ld66i0lBbsIu2KrkuYSRpI4wqDr1RW2Z3r3UHmlA-TZNziFwcDitVgubH8bLjOvbk9G2QaoG5LJjiNlQ0HVPj_kXjK80wRXN7wahd-doMK3SKTjKvDnkWsWrEScMyvY5swKyYICnYlS6idNT-3dcpQDQlIQ.XVVUCuJkdmKUbjFi.FdyQmA1O5Yze2Outu5zOWhuOXcLRLUNs8PhNbhZhgGDp.shOAEzwB2nt9A8Ojb5lo4w"
 }
