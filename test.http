@@ -1,0 +1,21 @@
+
+##### push no encuentra trjeta
+
+POST http://localhost:9095/encrypt
+Content-Type: application/json
+
+{
+    "id":11,
+    "name":"Gashpar"
+}
+
+
+
+####
+
+POST http://localhost:9095/decrypt
+Content-Type: application/json
+
+{
+    "token":"eyJ0eXAiOiJKT1NFIiwiZW5jIjoiQTI1NkdDTSIsImlhdCI6IjE2MjUwNTc4OTYiLCJhbGciOiJSU0EtT0FFUC0yNTYiLCJraWQiOiJ0a24uaXMuandlLjEifQ.oKuHDBDBQy6Jln6y2TodfBBbM1vFFiaXo5Qmu-EngttS4oPMMl-w-FUu4l8k-haXKY18ld-CXzjJDECymooVwDFyngTIC7zE0uPfIDfoWanbkOS042g6oJt5KXZAPhHL_SRYQpD2ehbjXCiujA_Io9_p6sSuiNnhpnj5n6IuBGyfFMH1D9IRr4Tdlg_cfs80SKIvQ5VKuW-bSTBjkzGgXIxklF5OFLIzOz2fJDQg1OW1GpvTojhIhV7QZfP1W-FxJcpIGxozlXV4CslPqRUgadkuklpSxEJZsiLMtMFUcJtZQxfrtqmaUnOs-PxragO2l66vmXECdBt_cPC85M3WIw.xdyLOgdVXTRpUj3N.337otq3yVxZEpe9q9M3KUZY5YsuFH_VHtio.IdfOtRCnu7bzFs32Pn8YDQ"
+}
