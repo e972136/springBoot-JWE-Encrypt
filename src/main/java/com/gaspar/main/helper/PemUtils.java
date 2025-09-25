@@ -47,6 +47,7 @@ public class PemUtils {
     }
 
     public static String readPem(String resourcePath) throws Exception {
+        log.info("resourcePath: "+resourcePath);
         Path path = Paths.get(resourcePath);
         if (Files.exists(path)) {
             // Caso 1: archivo en el sistema
