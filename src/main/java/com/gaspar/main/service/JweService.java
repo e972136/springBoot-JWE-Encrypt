@@ -10,6 +10,7 @@ import com.nimbusds.jose.shaded.gson.Gson;
 import com.nimbusds.jwt.EncryptedJWT;
 import com.nimbusds.jwt.JWTClaimsSet;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.KeyPair;
@@ -23,8 +24,11 @@ public class JweService {
 
     private static Gson gson = new Gson();
 
+    @Value("${app.key.public}")
+    private String privateKeyPath;
+
     private RSAPublicKey publicKey;
-    private RSAPrivateKey privateKey;
+//    private RSAPrivateKey privateKey;
 
     @PostConstruct
     public void init() throws Exception{
@@ -40,10 +44,11 @@ public class JweService {
         /**
          * cargar archivos
          */
-        publicKey = PemUtils.loadPublicKey("keys/public_key.pem");
+//        publicKey = PemUtils.loadPublicKey("keys/public_key.pem");
+        publicKey = PemUtils.loadPublicKey(privateKeyPath);
         System.out.println("->publica cargada");
-        privateKey = PemUtils.loadPrivateKey("keys/private_key.pem");
-        System.out.println("->privada cargada");
+//        privateKey = PemUtils.loadPrivateKey("keys/private_key.pem");
+//        System.out.println("->privada cargada");
 
     }
 
@@ -69,24 +74,24 @@ public class JweService {
         return jweString;
     }
 
-    public String decrypt(InfoToDecrypt info) {
-        String token = info.token();
-
-        try {
-            EncryptedJWT jwt = EncryptedJWT.parse(token);
-            jwt.decrypt(new RSADecrypter(privateKey));
-            JWTClaimsSet jwtClaimsSet = jwt.getJWTClaimsSet();
-
-            return jwtClaimsSet.toString();
-
-        }
-        catch (ParseException e) {
-//            return new ResponseEntity<>(TokenResponse.of("-1",e.getMessage(),null), HttpStatus.BAD_REQUEST);
-            return "error";
-        }
-        catch (JOSEException e) {
-            return "error";
-//            return new ResponseEntity<>(TokenResponse.of("-2",e.getMessage(),null), HttpStatus.BAD_REQUEST);
-        }
-    }
+//    public String decrypt(InfoToDecrypt info) {
+//        String token = info.token();
+//
+//        try {
+//            EncryptedJWT jwt = EncryptedJWT.parse(token);
+//            jwt.decrypt(new RSADecrypter(privateKey));
+//            JWTClaimsSet jwtClaimsSet = jwt.getJWTClaimsSet();
+//
+//            return jwtClaimsSet.toString();
+//
+//        }
+//        catch (ParseException e) {
+////            return new ResponseEntity<>(TokenResponse.of("-1",e.getMessage(),null), HttpStatus.BAD_REQUEST);
+//            return "error";
+//        }
+//        catch (JOSEException e) {
+//            return "error";
+////            return new ResponseEntity<>(TokenResponse.of("-2",e.getMessage(),null), HttpStatus.BAD_REQUEST);
+//        }
+//    }
 }

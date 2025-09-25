@@ -27,12 +27,12 @@ public class JweController {
         return ResponseEntity.ok(jweService.encrypt(info));
     }
 
-    @PostMapping("/decrypt")
-    public ResponseEntity<String> decrypt(
-            @RequestBody InfoToDecrypt info
-    ){
-        return ResponseEntity.ok(jweService.decrypt(info));
-    }
+//    @PostMapping("/decrypt")
+//    public ResponseEntity<String> decrypt(
+//            @RequestBody InfoToDecrypt info
+//    ){
+//        return ResponseEntity.ok(jweService.decrypt(info));
+//    }
 
 
 }
